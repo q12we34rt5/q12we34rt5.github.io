@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style type="text/css">
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            background-color: #dde1e7;
+
+        }
+
+        #main-page {
+            width: 100%;
+            height: 100%;
+            background-color: #dde1e7;
+            color: #31344b;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #main-page * {
+            color: #31344b;
+        }
+
+        #message {
+            margin: auto;
+            margin-bottom: 50px;
+            font-size: 100px;
+            font-family: monospace;
+        }
+
+        #home-link {
+            margin: auto;
+            margin-top: 50px;
+        }
+
+        #home {
+            width: 700px;
+            height: 130px;
+            margin: auto;
+            font-size: 60px;
+            font-style: bold;
+            color: #31344b;
+            border: solid 1px #66666600;
+            border-radius: 20px;
+            background-color: #dde1e7;
+            transition-duration: 0.2s;
+            box-shadow:
+                -5px -5px 5px #ffffffaf,
+                5px 5px 5px #0000002f,
+                inset -5px -5px 5px #ffffff00,
+                inset 5px 5px 5px #00000000;
+        }
+
+        #home:hover {
+            box-shadow:
+                -5px -5px 5px #ffffff00,
+                5px 5px 5px #00000000,
+                inset -5px -5px 5px #ffffffaf,
+                inset 5px 5px 5px #0000002f;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="main-page">
+        <h1 id="message">Unavailable yet...</h1>
+        <a href="index.html" id="home-link"><button id="home">Back to Home Page</button></a>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!--
+    <link rel="stylesheet" href="jquery.mobile-1.4.5.min.css" />
+    <script src="jquery.min.js"></script>
+    <script src="jquery.mobile-1.4.5.min.js"></script>
+    -->
+    <link rel="stylesheet" href="style.css" />
+    <style type="text/css">
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            background-color: #dde1e7;
+        }
+
+        /*
+            box-shadow:
+                -5px -5px 10px #ffffff8f,
+                inset -5px -5px 10px #ffffff8f,
+                5px 5px 10px #0000006f,
+                inset 5px 5px 10px #0000006f;
+            color: #31344b;
+        */
+
+        #main-page {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+
+        #head {
+            font-size: 100px;
+            color: #31344b;
+        }
+
+        .head-box-top {
+            width: 100%;
+            height: 100px;
+        }
+
+        .head-box-bottom {
+            width: 100%;
+            height: 30px;
+        }
+
+        .card-container {
+            width: 70%;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .card-align {
+            margin: auto;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .box {
+            width: 30px;
+            height: 560px;
+        }
+
+        .card {
+            width: 350px;
+            height: 500px;
+            margin: auto;
+            border: solid 1px#66666622;
+            border-radius: 20px;
+            box-shadow:
+                -5px -5px 15px #ffffffff,
+                5px 5px 15px #0000004f;
+        }
+
+        .button-style {
+            width: 150px;
+            height: 50px;
+            font-size: 20px;
+            color: #31344b;
+            border: solid 1px #66666600;
+            border-radius: 10px;
+            background-color: #dde1e7;
+            transition-duration: 0.2s;
+            box-shadow:
+                -5px -5px 5px #ffffffaf,
+                5px 5px 5px #0000002f;
+        }
+
+        .button-style:hover {
+            box-shadow:
+                -5px -5px 5px #ffffff00,
+                5px 5px 5px #00000000,
+                inset -5px -5px 5px #ffffffaf,
+                inset 5px 5px 5px #0000002f;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="main-page">
+
+        <div class="head-box-top"></div>
+        <div id="head">關於我</div>
+        <div class="head-box-bottom"></div>
+
+        <div class="card-container">
+            <div class="card-align">
+                <div class="box"></div>
+                <div class="card">
+                    AAA<br>
+                    BBB<br>
+                    <button class="button-style">See more</button>
+                </div>
+                <div class="box"></div>
+            </div>
+            <div class="card-align">
+                <div class="box"></div>
+                <div class="card">
+
+                </div>
+                <div class="box"></div>
+            </div>
+            <div class="card-align">
+                <div class="box"></div>
+                <div class="card">
+
+                </div>
+                <div class="box"></div>
+            </div>
+
+        </div>
+    </div>
+
+    </div>
+
+</body>
+
+</html>

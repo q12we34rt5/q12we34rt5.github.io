@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>CSS/Js Clock</title>
+</head>
+
+<body>
+
+    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=VT323&display=swap" rel="stylesheet">
+    <div id='dig-clock'>
+        <div id='dig-display'></div>
+        <div id='control-panel'>
+            <button onclick="start()">Start</button>
+            <button onclick="pause()">Pause</button>
+            <button onclick="init()">Reset</button>
+        </div>
+    </div>
+    <style type='text/css'>
+        body {
+            background-color: #091921;
+        }
+
+        #dig-clock {
+            --digit-size: 10vw;
+            --sep: 10px;
+            background-color: #091921;
+            display: flex;
+            position: absolute;
+            -webkit-box-reflect: below -1px linear-gradient(transparent, #091921);
+        }
+
+        #dig-display {
+            width: calc(var(--digit-size) * 0.74 * 5 + 10px);
+            height: calc(var(--digit-size) * 1 + 5px);
+            margin-top: auto;
+            margin-left: var(--sep);
+            margin-right: 0px;
+            margin-bottom: auto;
+            border: calc(var(--digit-size) / 20) solid white;
+            border-radius: calc(var(--digit-size) / 10);
+            background-color: #091921;
+            color: #ffffff;
+            text-align: top;
+            font-family: 'Major Mono Display';
+            font-size: var(--digit-size);
+            text-shadow:
+                0px 0px 10px #03bcf4,
+                0px 0px 20px #03bcf4,
+                0px 0px 40px #03bcf4,
+                0px 0px 80px #03bcf4,
+                0px 0px 120px #03bcf4;
+            box-shadow: 0px -5px 10px #03bcf47f;
+        }
+
+        #control-panel {
+            height: calc(var(--digit-size) * 1 + 5px) + 6px;
+            border: var(--sep) solid transparent;
+            margin-top: auto;
+            margin-left: 0px;
+            margin-right: auto;
+            margin-bottom: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #control-panel>button {
+            margin-top: calc(var(--digit-size) / 50);
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: calc(var(--digit-size) / 50);
+            font-size: calc(var(--digit-size) / 4);
+            font-family: 'Consolas';
+            border: calc(var(--digit-size) / 50) solid white;
+            border-radius: calc(var(--digit-size) / 25);
+            background-color: transparent;
+            color: rgb(255, 255, 255);
+            text-shadow: 0px 0px 5px #03bcf4;
+            box-shadow: 0px -2px 5px #03bcf47f;
+            transition-duration: 0.4s;
+        }
+
+        #control-panel>button:hover {
+            box-shadow:
+                0px 0px 15px #03bcf4,
+                inset 0px 0px 10px #03bcf4;
+        }
+    </style>
+    <script type='text/javascript'>
+        var div = document.querySelector('#dig-display');
+        var total_time = 0;
+        var colon = true;
+        var timeoutID = null;
+        function update() {
+            var min = Math.floor((total_time + 0.1) / 60);
+            var sec = Math.floor(total_time % 60);
+            div.innerHTML = ('' + (100 + min)).substring(1)
+                + (colon ? '-' : ' ')
+                + ('' + (100 + sec)).substring(1);
+            colon ^= 1;
+        }
+        function init() {
+            total_time = 1200;
+            colon = true;
+            update();
+            clearInterval(timeoutID);
+            timeoutID = null;
+        }
+        function start() {
+            if (timeoutID != null) return;
+            timeoutID = window.setInterval(() => {
+                total_time--;
+                update();
+            }, 1000);
+        }
+        function pause() {
+            clearInterval(timeoutID);
+            timeoutID = null;
+        }
+        init();
+    </script>
+    <script type='text/javascript'>
+        dragElement(document.querySelector('#dig-clock'));
+
+        function dragElement(elmnt) {
+            // Make the DIV element draggable:
+            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            if (document.getElementById(elmnt.id + "header")) {
+                // if present, the header is where you move the DIV from:
+                document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+            } else {
+                // otherwise, move the DIV from anywhere inside the DIV:
+                elmnt.onmousedown = dragMouseDown;
+            }
+
+            function dragMouseDown(e) {
+                e = e || window.event;
+                e.preventDefault();
+                // get the mouse cursor position at startup:
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = closeDragElement;
+                // call a function whenever the cursor moves:
+                document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+                // calculate the new cursor position:
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                // set the element's new position:
+                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+                // stop moving when mouse button is released:
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
